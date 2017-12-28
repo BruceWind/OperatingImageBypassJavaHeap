@@ -31,24 +31,16 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d("TEST", "time");
+                Log.d("TEST", "begin");
 
                 String in = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test.jpg";
                 String out = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test2.jpg";
 
-                for (int i = 0; i < 30; i++) {
-                    try {//测试内存释放
-                        Thread.sleep(800);
-                        Log.d("TEST", "begin");
-//                        NativeUtil.compressJpeg(in, out);
-                        NativeUtil.rotateJpeg(in, out);
-//                        Log.d("TEST", "end");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+                //这里可以循环几十次测试内存释放
+                //NativeUtil.compressJpeg(in, out);
+                NativeUtil.rotateJpeg(in, out);
 
-                System.gc();
+                Log.d("TEST", "end");
 
             }
         }).start();

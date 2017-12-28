@@ -37,15 +37,6 @@
 #define true 1
 #define false 0
 
-jbyteArray stoJstring(JNIEnv* env, const char* pat,int len) {
-	jbyteArray bytes = (*env)->NewByteArray(env, len);
-	(*env)->SetByteArrayRegion(env, bytes, 0, len,  pat);
-	jsize alen = (*env)->GetArrayLength(env, bytes);
-	return bytes;
-}
-
-
-
 
 jint Java_net_bither_util_NativeUtil_compressJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout) {
     const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);

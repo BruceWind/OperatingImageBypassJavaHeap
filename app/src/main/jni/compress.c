@@ -45,9 +45,10 @@ void write_jpeg(char *filename, unsigned char **data, int *width, int *height)
     jpeg_stdio_dest(&cinfo, outfile);
     cinfo.image_width = *width;
     cinfo.image_height = *height;
-    cinfo.in_color_space = JCS_RGB;
-    cinfo.input_components = 3;
+    cinfo.in_color_space = JCS_RGB;//JCS_GRAYSCALE:灰度图,JCS_RGB：彩色图
+    cinfo.input_components = 3;// 在此为1,表示灰度图， 如果是彩色位图，则为3
     jpeg_set_defaults(&cinfo);
+    jpeg_set_quality (&cinfo, 80, TRUE);
     jpeg_start_compress(&cinfo, TRUE);
     unsigned char *line_pointer;
     int i = 0;

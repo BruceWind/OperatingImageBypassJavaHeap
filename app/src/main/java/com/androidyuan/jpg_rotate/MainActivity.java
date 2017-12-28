@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
-
 import net.bither.util.NativeUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,11 +16,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-
-
-//        testJpeg();
         testCompress();
     }
 
@@ -37,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 String out = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test2.jpg";
 
                 //这里可以循环几十次测试内存释放
-                //NativeUtil.compressJpeg(in, out);
-                NativeUtil.rotateJpeg(in, out);
+                NativeUtil.compressJpeg(in, out);
+//                NativeUtil.rotateJpeg(in, out);
 
                 Log.d("TEST", "end");
 

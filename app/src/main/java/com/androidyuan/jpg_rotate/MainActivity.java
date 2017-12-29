@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 //这里可以循环几十次测试内存释放
 //                NativeUtil.compressJpeg(in, out,20);
 //                NativeUtil.resizeJpeg(in, out,0.6f);
-                NativeUtil.rotateJpeg(in, out);
+                NativeUtil.rotateJpeg(in, out,270);
 
                 Log.d("TEST", "end");
 

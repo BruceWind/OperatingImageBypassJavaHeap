@@ -16,10 +16,36 @@
 #define JFLAG_FILE_BACKUP          0x0100
 #define JFLAG_FILE_KEEP_TIME       0x0200
 
-int rotate(char *in,char *out)
+int rotate(char *in,char *out,int degree)
 {
-int tsize = 0;
+
 JXFORM_CODE transform = JXFORM_ROT_90;
+
+switch(degree)
+{
+     case 90:
+     {
+        transform = JXFORM_ROT_90;
+     }
+     break;
+
+     case 180:
+     {
+        transform = JXFORM_ROT_180;
+        }
+     break;
+
+     case 270:
+     {
+        transform = JXFORM_ROT_270;
+     }
+     break;
+     default : return -1;
+}
+
+
+int tsize = 0;
+
 unsigned int flags =
 	JFLAG_TRANSFORM_IMAGE     |
 	JFLAG_TRANSFORM_THUMBNAIL |
@@ -46,11 +72,10 @@ struct jpeg_decompress_struct srcinfo;
  srcinfo.mem->max_memory_to_use = dstinfo.mem->max_memory_to_use;
 
  copyoption = JCOPYOPT_DEFAULT;
- transformoption.transform = JXFORM_NONE;
  transformoption.trim = FALSE;
  transformoption.crop = FALSE;
  transformoption.force_grayscale = FALSE;
- transformoption.transform = JXFORM_ROT_90;
+ transformoption.transform = transform;
 
 
    FILE * infile = fopen(in, "rb");

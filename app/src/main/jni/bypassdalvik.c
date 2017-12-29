@@ -47,10 +47,10 @@ jint Java_net_bither_util_NativeUtil_resizeJpeg(JNIEnv* env,jobject thiz,jstring
     return zoom_jpeg_file(in,out,(float)factor);
 }
 
-jint Java_net_bither_util_NativeUtil_rotateJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout) {
+jint Java_net_bither_util_NativeUtil_rotateJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout,jint degree) {
     const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);
     const char *out = (*env)->GetStringUTFChars(env, fileout, JNI_FALSE);
 
-    return rotate(in,out);
+    return rotate(in,out,(int)degree);
 }
 

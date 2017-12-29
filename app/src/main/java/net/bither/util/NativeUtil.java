@@ -22,12 +22,34 @@ package net.bither.util;
  */
 public class NativeUtil {
 
+
+	/**
+	 *
+	 * @param in
+	 * @param out
+	 * @param quality   must between 1-99
+	 * @return  0 : success else :failed
+	 */
 	public static native int compressJpeg(String in,String out,int quality);
 
-	//该方法比较耗时 较大图片4s左右
+
+	/**
+	 *  该方法比较耗时 较大图片4s左右
+	 * @param in
+	 * @param out
+	 * @param factor  : <1 && >0.5f
+	 * @return 0 : success else :failed
+	 */
 	public static native int resizeJpeg(String in,String out,float factor);
 
-	public static native int rotateJpeg(String in,String out);
+	/**
+	 * 顺时针旋转 90×n 度数
+	 * @param in
+	 * @param out
+	 * @param degreee  must in 90 ,180 ,270
+	 * @return  0 : success else :failed
+	 */
+	public static native int rotateJpeg(String in,String out,int degreee);
 
 
 	static {

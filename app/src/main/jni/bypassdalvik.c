@@ -15,7 +15,6 @@
  */
 
 #include <string.h>
-#include <android/log.h>
 #include <jni.h>
 #include <stdio.h>
 #include <setjmp.h>
@@ -28,23 +27,25 @@
 #include "config.h"
 #include "rotate.c"
 #include "compress.h"
-
-#define LOG_TAG "jni"
-#define LOGW(...)  __android_log_write(ANDROID_LOG_WARN,LOG_TAG,__VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
-
-#define true 1
-#define false 0
+#include "resize.h"
 
 
-jint Java_net_bither_util_NativeUtil_compressJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout) {
+jint Java_net_bither_util_NativeUtil_compressJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout,jint quality)
+{
     const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);
     const char *out = (*env)->GetStringUTFChars(env, fileout, JNI_FALSE);
 
-    return compress(in,out);
+    return compress(in,out,(int)quality);
 }
 
+
+jint Java_net_bither_util_NativeUtil_resizeJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout,jfloat factor)
+{
+    const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);
+    const char *out = (*env)->GetStringUTFChars(env, fileout, JNI_FALSE);
+
+    return zoom_jpeg_file(in,out,(float)factor);
+}
 
 jint Java_net_bither_util_NativeUtil_rotateJpeg(JNIEnv* env,jobject thiz,jstring file,jstring fileout) {
     const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);

@@ -4,7 +4,6 @@
 #include "transupp.h"       /* Support routines for jpegtran */
 
 
-
 /* various flags */
 #define JFLAG_TRANSFORM_IMAGE      0x0001
 #define JFLAG_TRANSFORM_THUMBNAIL  0x0002

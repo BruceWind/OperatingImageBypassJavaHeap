@@ -1,2 +1,2 @@
 
-int compress(char * in,char * out);
+int compress(char * in,char * out,int quality);

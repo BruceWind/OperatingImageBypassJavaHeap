@@ -35,7 +35,7 @@ void  read_jpeg(char *filename, unsigned char **data, int *width, int *height)
 //    free(line_pointer);
 }
 
-void write_jpeg(char *filename, unsigned char **data, int *width, int *height)
+void write_jpeg(char *filename, unsigned char **data, int *width, int *height,int quality)
 {
     FILE * outfile = fopen(filename, "wb");
     struct jpeg_compress_struct cinfo;
@@ -48,7 +48,7 @@ void write_jpeg(char *filename, unsigned char **data, int *width, int *height)
     cinfo.in_color_space = JCS_RGB;//JCS_GRAYSCALE:灰度图,JCS_RGB：彩色图
     cinfo.input_components = 3;// 在此为1,表示灰度图， 如果是彩色位图，则为3
     jpeg_set_defaults(&cinfo);
-    jpeg_set_quality (&cinfo, 80, TRUE);
+    jpeg_set_quality (&cinfo, quality, TRUE);
     jpeg_start_compress(&cinfo, TRUE);
     unsigned char *line_pointer;
     int i = 0;
@@ -97,18 +97,22 @@ void set_pixel_of(int x, int y, unsigned char *dest, unsigned char **data, int *
 }
 
 
-int compress(char * in,char * out){
+int compress(char * in,char * out,int quality){
+
+    if(quality<1 && quality>=100)
+        return -1;
+
+
     int width, height = 0;
     unsigned char *data;
 
      read_jpeg(in, &data, &width, &height);
     unsigned char pixel[3] = {0, 0, 0};
     set_pixel_of(0, 0, pixel, &data, &width, &height);
-    write_jpeg(out, &data, &width, &height);
+    write_jpeg(out, &data, &width, &height,quality);
 
     free(data);
     //free(width);
     //free(height);
     return 0;
 }
-//该片段来自于http://outofmemory.cn

@@ -16,9 +16,17 @@
 
 package net.bither.util;
 
+
+/**
+ *  所有native return 0 都代表操作成功
+ */
 public class NativeUtil {
 
-	public static native int compressJpeg(String in,String out);
+	public static native int compressJpeg(String in,String out,int quality);
+
+	//该方法比较耗时 较大图片4s左右
+	public static native int resizeJpeg(String in,String out,float factor);
+
 	public static native int rotateJpeg(String in,String out);
 
 

@@ -30,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
                 String out = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test2.jpg";
 
                 //这里可以循环几十次测试内存释放
-                NativeUtil.compressJpeg(in, out);
-//                NativeUtil.rotateJpeg(in, out);
+//                NativeUtil.compressJpeg(in, out,20);
+//                NativeUtil.resizeJpeg(in, out,0.6f);
+                NativeUtil.rotateJpeg(in, out);
 
                 Log.d("TEST", "end");
 

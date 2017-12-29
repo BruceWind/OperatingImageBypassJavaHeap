@@ -41,7 +41,8 @@ include $(PREBUILT_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 LOCAL_MODULE    := bypassdalvik
 LOCAL_SRC_FILES := bypassdalvik.c \
-										compress.c
+										compress.c  	\
+										resize.c
 LOCAL_SHARED_LIBRARIES := libjpeg
 LOCAL_LDLIBS := -ljnigraphics -llog  
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \

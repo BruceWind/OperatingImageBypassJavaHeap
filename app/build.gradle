@@ -19,7 +19,7 @@ android {
         ndk {
             // Specifies the ABI configurations of your native
             // libraries Gradle should build and package with your APK.
-            abiFilters    'armeabi'
+            abiFilters    'armeabi-v7a'
             cFlags '-std=c++11 -fexceptions -fpermissive'
             stl 'stlport_static'
         }
@@ -30,6 +30,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //使用这个可以直接debug
     externalNativeBuild{
         ndkBuild{
             path file("src/main/jni/Android.mk")

@@ -16,7 +16,7 @@
 #define JFLAG_FILE_BACKUP          0x0100
 #define JFLAG_FILE_KEEP_TIME       0x0200
 
-int rotate(char *in,char *out,int degree)
+int rotate_jpeg(char *in,char *out,int degree)
 {
 
 JXFORM_CODE transform = JXFORM_ROT_90;

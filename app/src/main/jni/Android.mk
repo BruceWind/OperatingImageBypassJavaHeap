@@ -44,8 +44,17 @@ LOCAL_SRC_FILES := bypassdalvik.c \
 										compress.c  	\
 										resize.c
 LOCAL_SHARED_LIBRARIES := libjpeg
-LOCAL_LDLIBS := -ljnigraphics -llog  
+LOCAL_STATIC_LIBRARIES += png
+ # 依赖zlib  因为libpng依赖zlib
+LOCAL_LDLIBS := -ljnigraphics -llog  -lz
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/libjpeg-turbo \
-                    $(LOCAL_PATH)/libjpeg-turbo/android                  
+                    $(LOCAL_PATH)/libjpeg-turbo/android
+
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/libpng
+
+
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+include $(LOCAL_PATH)/libpng/Android.mk

@@ -52,6 +52,21 @@ public class NativeUtil {
 	public static native int rotateJpeg(String in,String out,int degreee);
 
 
+
+
+	/**
+	 *
+	 * test记录：循环200次的内存的释放回收通过
+	 *
+	 * @param in
+	 * @param out
+	 * @param level   must between 1-10,不同于jpeg的参数,这里是压缩等级
+	 *                if(level == 10) 可能会修改颜色,透明度,像素深度
+	 * @return  0 : success else :failed
+	 */
+	public static native int compressPng(String in,String out,int level);
+
+
 	static {
 		System.loadLibrary("jpeg");
 		System.loadLibrary("bypassdalvik");

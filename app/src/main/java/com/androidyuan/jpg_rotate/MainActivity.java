@@ -21,23 +21,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void testCompress() {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("TEST", "begin");
 
-                String in = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test.jpg";
-                String out = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test2.jpg";
+        for(int i=0;i<1;i++) {
 
-                //这里可以循环几十次测试内存释放
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            new Thread(
+            new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("TEST", "begin");
+
+                    String in = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test.png";
+                    String out = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test2.png";
+
+                    //这里可以循环几十次测试内存释放
 //                NativeUtil.compressJpeg(in, out,20);
 //                NativeUtil.resizeJpeg(in, out,0.6f);
-                NativeUtil.rotateJpeg(in, out,270);
+                    int result = NativeUtil.compressPng(in, out, 9);
 
-                Log.d("TEST", "end");
+                    Log.d("TEST", "end : " + result);
 
-            }
-        }).start();
+                }
+            }).start();
+
+        }
 
     }
 

@@ -35,7 +35,7 @@ jint Java_net_bither_util_NativeUtil_compressJpeg(JNIEnv* env,jobject thiz,jstri
     const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);
     const char *out = (*env)->GetStringUTFChars(env, fileout, JNI_FALSE);
 
-    return compress(in,out,(int)quality);
+    return compress_jpeg(in,out,(int)quality);
 }
 
 
@@ -51,6 +51,17 @@ jint Java_net_bither_util_NativeUtil_rotateJpeg(JNIEnv* env,jobject thiz,jstring
     const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);
     const char *out = (*env)->GetStringUTFChars(env, fileout, JNI_FALSE);
 
-    return rotate(in,out,(int)degree);
+    return rotate_jpeg(in,out,(int)degree);
+}
+
+
+
+
+jint Java_net_bither_util_NativeUtil_compressPng(JNIEnv* env,jobject thiz,jstring file,jstring fileout,jint level)
+{
+    const char *in = (*env)->GetStringUTFChars(env, file, JNI_FALSE);
+    const char *out = (*env)->GetStringUTFChars(env, fileout, JNI_FALSE);
+
+    return compress_png(in,out,(int)level);
 }
 

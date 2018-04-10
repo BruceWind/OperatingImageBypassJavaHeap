@@ -60,8 +60,8 @@ public class NativeUtil {
 	 *
 	 * @param in
 	 * @param out
-	 * @param level   must between 1-10,不同于jpeg的参数,这里是压缩等级
-	 *                if(level == 10) 可能会修改颜色,透明度,像素深度
+	 * @param level   must between 1-9,不同于jpeg的参数,这里是压缩等级
+	 *               TODO ==> if(level == 10) 可能会修改颜色,透明度,像素深度,具体算法参考optipng这个linux开源库
 	 * @return  0 : success else :failed
 	 */
 	public static native int compressPng(String in,String out,int level);

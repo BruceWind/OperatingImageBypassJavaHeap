@@ -1,3 +1,8 @@
+
+### 停止维护公告
+
+` [Android 8.0之后bitmap的内存就是创建在native heap中](https://is.gd/z3LucY) `
+
 # 绕过Bitmap操作图片,100%防止OOM 
 
 ------------------
@@ -59,7 +64,6 @@ android的Dalvik/ART遵守了JVM的规范，有堆内存限制，遇到大图操
 [source.android.com/...../dalvik_vm_properties](https://source.android.com/devices/tech/dalvik/configure?hl=zh-cn#dalvik_vm_properties)
 
 [sourceforge:libjpeg](http://libjpeg.sourceforge.net/)
-
 
 
 

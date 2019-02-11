@@ -1,7 +1,7 @@
 
 ### 停止维护公告
 
-[Android 8.0之后bitmap的内存就是创建在native heap中](https://developer.android.com/topic/performance/graphics/manage-memory)
+[Android 8.0之后bitmap的内存就是创建在native heap中](https://developer.android.com/topic/performance/graphics/manage-memory),随着用户不断更换新手机,慢慢都用到8.0更新的系统了,这个库就没有使用的意义了.
 
 # 绕过Bitmap操作图片,100%防止OOM 
 

@@ -4,11 +4,13 @@ bypass java heap, completely avoid OOM
 [中文](https://github.com/BruceWind/OperatingImageBypassDalvik/blob/master/README_CN.md)
 
 ***Stop maintaining announcement:***
-> [In devices above Android 8.0, bitmaps will store in native heap](https://developer.android.com/topic/performance/graphics/manage-memory). In the future, devices will keep upgrading to newly and above 8.0 so that this repo will be useless. I'm very sorry for stoping maintaince.
+> [In devices above Android 8.0, bitmaps will store in native heap](https://developer.android.com/topic/performance/graphics/manage-memory). 
+> In the future, devices will keep upgrading to newly above 8.0 so that this repo will be useless. This is why I stopped maintenance. 
+> I'm very sorry about that.
 ------------------
 
 It is fact that Android's jvm **Dalvik/ART** accords to JVM standard. So that Android JVM has set **xmx** in its configuration. Here I don't want to describe more infomation about what **xmx** is. You can look into docs or websites for learning it. 
-It limits sise of java heap in one application. So that as you operrate large bitmap, device may throw OOM.
+It limits size of java heap in one application. So that as you operrate large bitmap, device may throw OOM.
 
 Although, size of physical memory, such as **RAM**, has been increasing for the decade, but the limitation of java heap still exist. Furthermore, the camera is improve though, so the images that we need operate keep incresing though.
 Another way, even though some brand or company who produce phones has modified **xmx** of their Android phones, the limitation is still not enough for large images. 
@@ -35,7 +37,7 @@ Below a picture, I run ```adb shell dumpsys meminfo PACKAGENAME ``` to printed t
 - [x]  resize jpeg
 
 - [x] compress  png          (2018.04.10)  
-    > - [ ] provide other algrithm about compression, may intererence `optipng` which has been used in most services or applications.
+    > - [ ] provide other algrithm about compression, may introduce `optipng` which has been used in most services or applications.
 - [ ]  rotate  png
 - [ ]  resize png
 

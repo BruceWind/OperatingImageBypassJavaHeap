@@ -4,25 +4,24 @@ bypass java heap, completely avoid OOM
 [中文](https://github.com/BruceWind/OperatingImageBypassDalvik/blob/master/README_CN.md)
 
 ***Stop maintaining announcement:***
-> [Due to the fact that devices above Android 8.0, bitmap store in  native heap](https://developer.android.com/topic/performance/graphics/manage-memory), devices will keep upgrade to newly, most of devices will above 8.0 so that this repo is no use. I'm very sorry about that.
+> [In devices above Android 8.0, bitmaps will store in native heap](https://developer.android.com/topic/performance/graphics/manage-memory). In the future, devices will keep upgrading to newly and above 8.0 so that this repo will be useless. I'm very sorry for stoping maintaince.
 ------------------
-Actually, it bypass Java heap to avoid OOM.
 
-It is fact that Android JVM has set **xmx** param. Here I don't want to descripe what **xmx** is. You can look into some doc for learning it.
+It is fact that Android's jvm **Dalvik/ART** accords to JVM standard. So that Android JVM has set **xmx** in its configuration. Here I don't want to describe more infomation about what **xmx** is. You can look into docs or websites for learning it. 
+It limits sise of java heap in one application. So that as you operrate large bitmap, device may throw OOM.
 
-android's jvm Dalvik/ART has follow JVM standard，it has limitation of java heap size. So as you oprate large bitmap, device may throw OOM。
+Although, size of physical memory, such as **RAM**, has been increasing for the decade, but the limitation of java heap still exist. Furthermore, the camera is improve though, so the images that we need operate keep incresing though.
+Another way, even though some brand or company who produce phones has modified **xmx** of their Android phones, the limitation is still not enough for large images. 
 
-Although, the devices has going to improve the physical RAM, but the limitation of java heap still not enough. Furthermore, the camera is improve though, so the bitmap keep incresing though.
-Beside, some brand or company who produce phones modify **xmx**, but the limitation still not enough for large bitmap. 
+On the other hand, **the native heap** has no limitation. It is able to allocate reach physical size.
+So, operating images in native heap can avoid OOM. In this repo I bypass Bitmap. In case it bypass bitmap, it will bypass java heap.
 
-On the other hand, native heap has not limitation. It is able to allocate reach physical size.
-
-To sum up, native heap is a free space I can use and the repo works in. All operations of bitmap in native heap that will compeletely avoid OOM. 
-
+To sum up, native heap is a free space I can use and the repo works in. All operations of image be in native heap that will compeletely avoid OOM. 
 
 
-### assure the native heap doesn't have limitation.
-I have tried to allocate numerous memory in native heap and don't execute `free`. The allocated memory is exceed 1G that still hasn't occured OOM.
+
+### The evidence for that the native heap doesn't have limitation.
+I have tried to allocate numerous memory in native heap and don't execute `free`. The allocated memory is exceed 1G that didm't occur OOM.
 
 Below a picture, I run ```adb shell dumpsys meminfo PACKAGENAME ``` to printed that memory information.
 

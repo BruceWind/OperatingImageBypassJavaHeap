@@ -1,5 +1,4 @@
-
-bypass java heap, completely avoid OOM
+OperatingImageBypassJavaHeap
 ------------------
 [中文](https://github.com/BruceWind/OperatingImageBypassDalvik/blob/master/README_CN.md)
 

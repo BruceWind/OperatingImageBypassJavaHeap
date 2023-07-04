@@ -1,31 +1,28 @@
 
-**停止维护公告**
+**停止维护公告 2021**
 
 > [Android 8.0之后bitmap的内存就是创建在native heap中](https://developer.android.com/topic/performance/graphics/manage-memory),随着用户不断更换新手机,慢慢都用到8.0更新的系统了,这个库就没有使用的意义了.
 
 # 绕过Bitmap操作图片,100%防止OOM 
 
 ------------------
-我们都知道JVM xmx参数，这个`xmx`不做具体介绍，这是jvm的基本参数，不了解的请自行查询Java虚拟机原理。
+虽然，现在新的android系统提供的这个限制都在调大，6.0官方ROM限制在96M,非官方ROM要大一些，因为非官方ROM在编译时修改了xmx参数配置，但是新出的手机相机拍摄出来的图片更大，相机技术的增长速度远大于这个限制的开放程度，进行大图操作，你懂得。
+我们都知道JVM xmx参数，这个`xmx`不做具体介绍，这是jvm的基本参数，不了解的请自行查询Java虚拟机原理。android的Dalvik/ART遵守了JVM的规范，有堆内存限制，遇到大图操作缩放旋转Bitmap的时候，就很容易OOM。
 
-android的Dalvik/ART遵守了JVM的规范，有堆内存限制，遇到大图操作缩放旋转Bitmap的时候，就很容易OOM。
-
-虽然，现在新的android系统提供的这个限制都在调大，我记得6.0官方ROM好像是96M,非官方ROM要大一些，因为非官方ROM在编译时修改了xmx参数配置，但是新出的手机相机拍摄出来的图片更大，相机技术的增长速度远大于这个限制的开放程度，进行大图操作，你懂得。
-
-
-上面说的核心原因在于你的bitmap内存申请都在dalvik heap中，这个最大内存的限制。
+上面说的核心原因在于你的bitmap内存申请都在Java heap中，这个最大内存的限制。
 但是native内存处于不太受管理的状态，这一点很多人不知道。
-
 
 
 这个库的目的在于绕过Dalvik heap 限制，去操作图片，保证无需担心OOM。怎么绕过Dalvik呢？就是绕过bitmap去直接对图片进行操作，毕竟Android 4.0以后的机器bitmap内存都在Dalvik中,我们所有操作图片时的内存申请都在Native heap中。
 
 
-### 证明native heap内存申请无限制 
+### 如下证明native heap内存申请无限制 
+
+<summary>点击查看</summary>
 我尝试用native写了个申请巨大内存又不执行`free()`的代码进行测试，申请了1G多的内存还是不会OOM，下图是我用```adb shell dumpsys meminfo PACKAGENAME ```打印出来的当前memory信息。
 
 ![](https://github.com/weizongwei5/my_blog_datasave/raw/62e952490c7fc3ef1f478c52985d4686331d17e0/img/native_memory_show.png)
-
+</details>
 
 ## 当前仓库进度
 

@@ -2,7 +2,7 @@ OperatingImageBypassJavaHeap
 ------------------
 [中文](https://github.com/BruceWind/OperatingImageBypassDalvik/blob/master/README_CN.md)
 
-***Announcement regarding discontinued maintenance at 2021:***
+***Announcement regarding discontinued maintenance in 2021:***
 > [In devices above Android 8.0, bitmaps store in native heaps](https://developer.android.com/topic/performance/graphics/manage-memory). 
 > In the future, most devices will keep upgrading to new above 8.0, so this repo will be useless. This is why I have decided to stop maintaining it.
 > I apologize to anyone who looks forward to updates.
@@ -10,10 +10,10 @@ OperatingImageBypassJavaHeap
 
 
 The size of physical memory **RAM** has been increasing for a decade; the limitation of the Java heap exists, though. Furthermore, the camera is improved, and the size of the images that we need to operate keeps increasing.
-By the way, even though some brands or companies produce phones whose **xmx** has been modified, the limitation on those devices are still insufficient for immensely large images. 
+By the way, even though some brands or companies produce phones whose **xmx** has been modified, the limitations on those devices are still insufficient for immensely large images. 
 
 It is a fact that Android's JVMs such as **Dalvik** and **ART** accord with JVM standards. So that the Android JVM has a configuration with **xmx**. 
-> In the README, I don't explain more about what **xmx** is. You can look into docs or websites for learning it.
+> In the README, I don't explain more about what **xmx** is. You can look into docs or websites for more about it.
  
 Due to the limitation of Java heap for one application, while you operate large bitmaps, the device may throw OOM.
 

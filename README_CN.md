@@ -2,6 +2,8 @@
 **停止维护公告 2021**
 
 > [Android 8.0之后bitmap的内存就是创建在native heap中](https://developer.android.com/topic/performance/graphics/manage-memory),随着用户不断更换新手机,慢慢都用到8.0更新的系统了,这个库就没有使用的意义了.
+> 
+> 因此，我需要跟所有期待这个repo的更新的朋友们道歉！
 
 # 绕过Bitmap操作图片,100%防止OOM 
 
@@ -17,7 +19,7 @@
 
 
 ### 如下证明native heap内存申请无限制 
-
+<details>
 <summary>点击查看</summary>
 我尝试用native写了个申请巨大内存又不执行`free()`的代码进行测试，申请了1G多的内存还是不会OOM，下图是我用```adb shell dumpsys meminfo PACKAGENAME ```打印出来的当前memory信息。
 

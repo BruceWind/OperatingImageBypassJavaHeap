@@ -4,17 +4,17 @@ OperatingImageBypassJavaHeap
 
 ***Announcement regarding discontinued maintenance at 2021:***
 > [In devices above Android 8.0, bitmaps store in native heaps](https://developer.android.com/topic/performance/graphics/manage-memory). 
-> In the future, devices will keep upgrading to new above 8.0, so this repo will be useless. This is why I have decided to stop maintaining it.
+> In the future, most devices will keep upgrading to new above 8.0, so this repo will be useless. This is why I have decided to stop maintaining it.
 > I apologize to anyone who looks forward to updates.
 ------------------
 
 
-Although the size of physical memory **RAM** has been increasing for a decade, the limitation of the Java heap still exists. Furthermore, the camera is improved, and the images that we need to operate keep increasing, though.
+Although the size of physical memory **RAM** has been increasing for a decade, the limitation of the Java heap exists. Furthermore, the camera is improved, and the images that we need to operate keep increasing.
 By the way, even though some brands or companies produce phones whose **xmx** has been modified, the limitation on those devices are still insufficient for immensely large images. 
 
 It is a fact that Android's JVMs such as **Dalvik** and **ART** accord with JVM standards. So that the Android JVM has a configuration with **xmx**. 
-> In the README, I don't want to describe more information about what **xmx** is. You can look into docs or websites for learning it.
-> 
+> In the README, I don't explain more about what **xmx** is. You can look into docs or websites for learning it.
+ 
 Due to the limitation of Java heap for one application, while you operate large bitmaps, the device may throw OOM.
 
 On the other hand, **the native heap** has no limitation. It is able to allocate reach physical size.

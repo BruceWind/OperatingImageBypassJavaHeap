@@ -9,7 +9,7 @@ OperatingImageBypassJavaHeap
 ------------------
 
 
-The size of physical memory **RAM** has been increasing for a decade; the limitation of the Java heap exists, though. Furthermore, the camera is improved, and the images that we need to operate keep increasing.
+The size of physical memory **RAM** has been increasing for a decade; the limitation of the Java heap exists, though. Furthermore, the camera is improved, and the size of the images that we need to operate keeps increasing.
 By the way, even though some brands or companies produce phones whose **xmx** has been modified, the limitation on those devices are still insufficient for immensely large images. 
 
 It is a fact that Android's JVMs such as **Dalvik** and **ART** accord with JVM standards. So that the Android JVM has a configuration with **xmx**. 

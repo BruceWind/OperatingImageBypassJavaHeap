@@ -9,7 +9,7 @@ OperatingImageBypassJavaHeap
 ------------------
 
 
-Although the size of physical memory **RAM** has been increasing for a decade, the limitation of the Java heap exists. Furthermore, the camera is improved, and the images that we need to operate keep increasing.
+The size of physical memory **RAM** has been increasing for a decade; the limitation of the Java heap exists, though. Furthermore, the camera is improved, and the images that we need to operate keep increasing.
 By the way, even though some brands or companies produce phones whose **xmx** has been modified, the limitation on those devices are still insufficient for immensely large images. 
 
 It is a fact that Android's JVMs such as **Dalvik** and **ART** accord with JVM standards. So that the Android JVM has a configuration with **xmx**. 
@@ -22,16 +22,18 @@ So, operating images in the native heap can avoid OOM. In this repo, I bypass Bi
 
 To sum up, the native heap is unlimited for every developer. This is why the repo works. All operations of images are in the native heap, which will completely avoid OOM. 
 
-
-
 ### The evidence for that the native heap doesn't have limitations.
+<details>
+<summary> click to expand</summary>
+
 I have tried to allocate numerous memory in the native heap and don't execute `free`. The allocated memory exceeds 1G, which didn't give rise to OOM.
 
 Below a picture, I run ```adb shell dumpsys meminfo PACKAGENAME ``` to print that memory information.
 
 ![](https://github.com/weizongwei5/my_blog_datasave/raw/62e952490c7fc3ef1f478c52985d4686331d17e0/img/native_memory_show.png)
 
-
+</details>
+ 
 ## The repo progress
 
 - [x] rotate  jpeg
